@@ -1,0 +1,204 @@
+@import "./../../fonts.styles.scss";
+@import "./../../styles.scss";
+
+.sign-up-contain {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.55) 40.46%, rgba(0, 0, 0, 0.8)),
+        url("./../../assets/background_sign_up.jpeg");
+
+    @media (max-width: 800px) and (min-width: 320px) {
+    }
+}
+.nav-contain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px;
+    height: 108px;
+    padding: 10px 96px;
+    box-sizing: border-box;
+
+    @media (min-width: 320px) and (max-width: 900px) {
+        padding: 10px 16px;
+    }
+
+    .logo-contain {
+        width: 200px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+
+        .desctop {
+            width: 200px;
+            height: 32px;
+
+            @media (min-width: 320px) and (max-width: 900px) {
+                display: none;
+            }
+        }
+
+        .mobile {
+            display: flex;
+
+            @media (min-width: 901px) {
+                display: none;
+            }
+        }
+    }
+}
+.log-in-button {
+    width: 99px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #2e3edf;
+    border-radius: 40px;
+    border: none;
+    width: 98px;
+    height: 47px;
+    color: #ffffff;
+    padding: 12px 24px 12px 24px;
+    font-size: 18px;
+    size: 700;
+    line-height: 23.44px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.header-contain {
+    width: 100vw;
+    max-width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+
+    .headline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 62.5px;
+            text-align: left;
+            color: #ffffff;
+
+            @media (min-width: 320px) and (max-width: 900px) {
+                font-size: 40px;
+                text-align: center;
+                line-height: 40px;
+            }
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 31.25px;
+            text-align: center;
+            color: #ffffff;
+
+            @media (min-width: 320px) and (max-width: 900px) {
+                font-size: 20px;
+                text-align: center;
+                line-height: 26px;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 23.44px;
+            text-align: center;
+            color: #ffffff;
+
+            @media (min-width: 320px) and (max-width: 900px) {
+                font-size: 16px;
+                text-align: center;
+                line-height: 20px;
+            }
+        }
+    }
+
+    .email-contain {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        width: 360px;
+        height: 48px;
+        border-radius: 40px;
+        border: 1px solid #ffffff;
+        //padding: 12px 24px;
+
+        @media (min-width: 320px) and (max-width: 900px) {
+            width: 320px;
+        }
+
+        input {
+            font-family: DM Sans;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 23.44px;
+            text-align: center;
+            background-color: transparent;
+            border: none;
+            color: #ffffff;
+
+            &::placeholder {
+                color: #ffffff;
+            }
+
+            &:focus {
+                outline: none; // Entfernt den Standardrahmen beim Fokussieren
+                color: #ffffff;
+            }
+        }
+    }
+
+    .signUp-contain {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 20px;
+
+        @media (min-width: 320px) and (max-width: 900px) {
+            flex-direction: column;
+            row-gap: 20px;
+        }
+
+        .signUp-button {
+            width: 142px;
+            height: 48px;
+            border-radius: 40px;
+            padding: 12px 24px 12px 24px;
+            display: grid;
+            gap: 4px;
+            background-color: #2e3edf;
+            border: none;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 23.44px;
+            text-align: left;
+            color: #ffffff;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

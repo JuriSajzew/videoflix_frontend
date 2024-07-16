@@ -1,0 +1,27 @@
+section {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 800px;
+
+    @media (min-width: 320px) and (max-width: 900px) {
+        top: 750px;
+    }
+}
+.footer-contain {
+    width: 272px;
+    height: 43px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+
+    a {
+        margin-right: 10px;
+        text-decoration: none;
+        color: #ffffff;
+    }
+}
