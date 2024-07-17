@@ -1,24 +1,39 @@
 <div class="sign-up-contain">
+
     <div class="nav-contain">
         <div class="logo-contain">
             <img class="desctop" src="./../../assets/Logo.png" alt="videoflix">
             <img class="mobile" src="./../../assets/logo_mobile.png" alt="pfeil nach rechts">
         </div>
-        <button class="log-in-button">Log in</button>
+        <button class="log-in-button" (click)="logIn()">Log in</button>
     </div>
 
-    <div class="header-contain">
-        <div class="headline">
-            <h1>Movies, TV shows, and more</h1>
-            <h3>Watch whenever you want wherever you want</h3>
-            <p>Enter your email to create or restart your subscription</p>
+    <div class="content">
+        <h2>Sign Up</h2>
+        <div class="frame178">
+            <div class="email-contain">
+                <input class="email" type="email" placeholder="Email Address">
+            </div>
+            <div class="password-contain">
+                <input class="password" [type]="passwordFieldType" placeholder="Password" [(ngModel)]="password"
+                    (ngModelChange)=" validatePasswords()">
+                <img src="./../../assets/visibility.png" alt="Toggle visibility" (click)="togglePasswordVisibility()"
+                    style="cursor:pointer">
+            </div>
+            <div class="password-contain">
+                <input class="password" [type]="passwordFieldType" placeholder="Password" [(ngModel)]="confirmPassword"
+                    (ngModelChange)="validatePasswords()">
+                <img src="./../../assets/visibility.png" alt="Toggle visibility" (click)="togglePasswordVisibility()"
+                    style="cursor:pointer">
+            </div>
+            <div class="dammy" *ngIf="!passwordError"> </div>
+            <div *ngIf="passwordError" class="error-message">
+                <img src="./../../assets/warning.png" alt="">{{ passwordError }}
+            </div>
+        </div>
 
-            <form class="signUp-contain">
-                <div class="email-contain">
-                    <input type="email" placeholder="Email Address">
-                </div>
-                <button class="signUp-button">Sign Up ></button>
-            </form>
+        <div class="get-started-button">
+            <button>Get Started</button>
         </div>
     </div>
 </div>

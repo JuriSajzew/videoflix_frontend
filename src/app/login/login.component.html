@@ -1,0 +1,44 @@
+<div class="login-contain">
+    <div class="nav-contain">
+        <div class="logo-contain">
+            <img class="desctop" src="./../../assets/Logo.png" alt="">
+            <img class="mobile" src="./../../assets/logo_mobile.png" alt="">
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Log in</h2>
+        <div class="frame178">
+            <div class="email-contain">
+                <input class="email" type="email" placeholder="Email Address">
+            </div>
+            <div class="password-contain">
+                <input class="password" [type]="passwordFieldType" placeholder="Password">
+                <img src="./../../assets/visibility.png" alt="Toggle visibility" (click)="togglePasswordVisibility()"
+                    style="cursor:pointer">
+            </div>
+            <div class="checkbox-contain">
+                <mat-checkbox class="example-margin" color="accent" [(ngModel)]="checked">
+                    <span>Remember me</span>
+                </mat-checkbox>
+            </div>
+        </div>
+
+        <div class="frame179">
+            <div class="frame9">
+                <button>Log in</button>
+            </div>
+            <div class="frame159">
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="frame10">
+                <span>New to Videoflix?</span>
+                <a href="#">Sign Up now</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import './fonts.styles.scss';
+@import "./fonts.styles.scss";
 
 body {
     margin: 0;
@@ -7,5 +7,136 @@ body {
 }
 
 * {
-    font-family: DM Sans, Arial, Helvetica, sans-serif !important;
+    font-family:
+        DM Sans,
+        Arial,
+        Helvetica,
+        sans-serif !important;
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 62.5px;
+    text-align: left;
+    color: #2e3edf;
+
+    @media (min-width: 320px) and (max-width: 900px) {
+        font-size: 40px;
+        line-height: 52.08px;
+    }
+}
+
+.content {
+    width: 520px;
+    height: 505px;
+    border-radius: 48px;
+    padding: 43px 56px;
+    box-sizing: border-box;
+    gap: 32px;
+    background: #ffffff;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (min-width: 320px) and (max-width: 900px) {
+        width: 358px;
+        height: 487px;
+        padding: 43px 24px;
+    }
+}
+
+.log-in-button {
+    width: 99px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2e3edf;
+    border-radius: 40px;
+    border: none;
+    width: 98px;
+    height: 47px;
+    color: #ffffff;
+    padding: 12px 24px 12px 24px;
+    font-size: 18px;
+    size: 700;
+    line-height: 23.44px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.frame178 {
+    display: grid;
+    gap: 16px;
+
+    @media (min-width: 320px) and (max-width: 900px) {
+        width: 310px;
+        height: 159px;
+    }
+
+    .email-contain,
+    .password-contain {
+        width: 408px;
+        height: 48px;
+        border-radius: 12px;
+        border: 1px solid #2e3edf;
+        gap: 10px;
+        display: grid;
+        padding: 12px 24px;
+        box-sizing: border-box;
+        color: #2e3edf;
+
+        @media (min-width: 320px) and (max-width: 900px) {
+            width: 310px;
+            height: 48px;
+        }
+
+        input {
+            border: none;
+            color: #2e3edf;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 23.44px;
+            text-align: left;
+
+            @media (min-width: 320px) and (max-width: 900px) {
+                font-size: 16px;
+            }
+
+            &::placeholder {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 23.44px;
+                text-align: left;
+                color: #2e3edf;
+
+                @media (min-width: 320px) and (max-width: 900px) {
+                    font-size: 16px;
+                }
+            }
+
+            &:focus {
+                outline: none; // Entfernt den Standardrahmen beim Fokussieren
+                color: #2e3edf;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 23.44px;
+                text-align: left;
+
+                @media (min-width: 320px) and (max-width: 900px) {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .password-contain {
+        display: flex;
+        justify-content: space-between;
+    }
 }

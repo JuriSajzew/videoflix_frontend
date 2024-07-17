@@ -1,28 +1,34 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { FormControl, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
   imports: [
-    MatButtonModule,
-    MatDividerModule,
-    MatIconModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent {
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  password: string = '';
+  confirmPassword: string = '';
+  passwordFieldType: string = 'password';
+  passwordError: string | null = null;
 
-  //matcher = new MyErrorStateMatcher();
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
+
+  validatePasswords(): void {
+    if (this.password !== this.confirmPassword) {
+      this.passwordError = 'Passwords do not match.';
+    } else {
+      this.passwordError = null;
+    }
+  }
+  logIn() {
+
+  }
 }
