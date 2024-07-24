@@ -10,10 +10,10 @@
         <h2>Log in</h2>
         <div class="frame178">
             <div class="email-contain">
-                <input class="email" type="email" placeholder="Email Address">
+                <input class="email" type="email" placeholder="Email Address" [(ngModel)]="email">
             </div>
             <div class="password-contain">
-                <input class="password" [type]="passwordFieldType" placeholder="Password">
+                <input class="password" [type]="passwordFieldType" placeholder="Password" [(ngModel)]="password">
                 <img src="./../../assets/visibility.png" alt="Toggle visibility" (click)="togglePasswordVisibility()"
                     style="cursor:pointer">
             </div>
@@ -26,14 +26,14 @@
 
         <div class="frame179">
             <div class="frame9">
-                <button>Log in</button>
+                <button (click)="loginButton()">Log in</button>
             </div>
             <div class="frame159">
-                <a href="#">Forgot password?</a>
+                <a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active">Forgot password?</a>
             </div>
             <div class="frame10">
                 <span>New to Videoflix?</span>
-                <a href="#">Sign Up now</a>
+                <a [routerLink]="['/signup']" routerLinkActive="router-link-active" >Sign Up now</a>
             </div>
         </div>
     </div>

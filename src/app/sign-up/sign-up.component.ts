@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -17,6 +18,9 @@ export class SignUpComponent {
   passwordFieldType: string = 'password';
   passwordError: string | null = null;
 
+
+constructor(private router: Router){}
+
   togglePasswordVisibility(): void {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
@@ -29,6 +33,6 @@ export class SignUpComponent {
     }
   }
   logIn() {
-
+    this.router.navigate(['/login']);
   }
 }
