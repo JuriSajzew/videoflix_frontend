@@ -19,7 +19,9 @@ export class SignUpComponent {
   passwordError: string | null = null;
 
 
-constructor(private router: Router){}
+  constructor(
+    private router: Router,
+  ) { }
 
   togglePasswordVisibility(): void {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
@@ -32,7 +34,9 @@ constructor(private router: Router){}
       this.passwordError = null;
     }
   }
+
   logIn() {
     this.router.navigate(['/login']);
   }
+
 }
