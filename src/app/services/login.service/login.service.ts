@@ -12,16 +12,22 @@ export class LoginService {
     private router: Router,
   ) { }
 
-  async login(email:string, password:string) {
+  async login(email: string, password: string) {
     try {
       let resp: any = await this.as.loginWithUsernameAndPassword(email, password);
       console.log(resp);
-      localStorage.setItem('token', resp['token']);
-      this.router.navigate(['/videocontent']);
+
+      if (resp && resp.token) {
+        localStorage.setItem('token', resp['token']);
+        this.router.navigate(['/videocontent']);
+      } else {
+        alert('Login ist Fehlgeschlagen');
+      }
+
     } catch (e) {
       //Show error message
       alert('Login ist Fehlgeschlagen');
-      console.error(e);
+      console.error('Login Error: ', e);
     }
   }
 }

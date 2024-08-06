@@ -1,0 +1,11 @@
+@import 'video.js/dist/video-js.css';
+@import "./../../styles.scss";
+
+.video-js .vjs-progress-holder {
+    display: none;
+  }
+
+  .video-js .vjs-play-control {
+    color: #fff; /* Ändert die Farbe des Play-Buttons */
+    background-color: #000; /* Ändert die Hintergrundfarbe des Play-Buttons */
+  }

@@ -1,5 +1,6 @@
 @import "./../../fonts.styles.scss";
 @import "./../../styles.scss";
+@import "video.js/dist/video-js.css";
 
 .forgot-password-contain {
     width: 100vw;
@@ -89,10 +90,27 @@
 
     .frame167 {
         width: 100%;
-        height: 120px;
+        height: 200px;
         gap: 16px;
         display: flex;
         border: 1px dotted red;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+        .video-contain {
+            width: 250px;
+            height: 170px;
+
+            video {
+                width: 110px;
+                height: 110px;
+            }
+
+            h3 {
+                color: #ffffff;
+            }
+        }
     }
 }
 
