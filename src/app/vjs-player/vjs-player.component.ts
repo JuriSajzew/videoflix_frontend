@@ -46,10 +46,6 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
       this.player = videojs(this.target.nativeElement, this.options, function onPlayerReady() {
         console.log('onPlayerReady', this);
       });
-      // Plugin initialisieren
-      this.player.hotkeys({
-        enableModifiersForNumbers: false
-      });
 
     } else {
       console.error('Target element is not available');

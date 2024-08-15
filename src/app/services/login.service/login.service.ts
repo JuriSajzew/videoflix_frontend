@@ -15,14 +15,10 @@ export class LoginService {
   async login(email: string, password: string) {
     try {
       let resp: any = await this.as.loginWithUsernameAndPassword(email, password);
-      console.log(resp);
+      console.log('Hier die Anmeldung ', resp);
 
-      if (resp && resp.token) {
-        localStorage.setItem('token', resp['token']);
-        this.router.navigate(['/videocontent']);
-      } else {
-        alert('Login ist Fehlgeschlagen');
-      }
+      localStorage.setItem('token', resp['token'])
+      this.router.navigateByUrl('/videocontent');
 
     } catch (e) {
       //Show error message

@@ -4,6 +4,8 @@ import { VideoService } from '../services/video.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { VjsPlayerComponent } from "../vjs-player/vjs-player.component";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from '../services/auth.interceptor/auth-interceptor.service';
 
 export interface Video {
   id: number;
@@ -12,6 +14,7 @@ export interface Video {
   created_at: string;
   category: string;
   video_file: string;
+
 }
 @Component({
   selector: 'app-startscreen',
@@ -21,7 +24,14 @@ export interface Video {
     VjsPlayerComponent
   ],
   templateUrl: './startscreen.component.html',
-  styleUrl: './startscreen.component.scss'
+  styleUrl: './startscreen.component.scss',
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ]
 })
 export class StartscreenComponent implements OnInit {
 

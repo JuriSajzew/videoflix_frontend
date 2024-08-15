@@ -37,11 +37,12 @@ export class LoginComponent {
     //private as: AuthService,
     private router: Router,
     private http: HttpClient,
-    private as: AuthService,
     private ls: LoginService,
   ) { }
 
   loginButton() {
-    this.ls.login(this.email, this.password)
+    this.ls.login(this.email, this.password);
+    console.log('Name ', this.email);
+    console.log('Pasword ', this.password);
   }
 }

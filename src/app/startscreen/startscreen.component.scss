@@ -2,15 +2,13 @@
 @import "./../../styles.scss";
 @import "video.js/dist/video-js.css";
 
-.forgot-password-contain {
-    width: 100vw;
-    height: 100vh;
+.startscreen-contain {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100vw;
     max-width: 100%;
-    height: 100vh;
+    height: 150vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -86,11 +84,11 @@
     justify-content: center;
     flex-direction: column;
     gap: 48px;
-    border: 1px dotted red;
+    border: 1px dotted green;
 
     .frame167 {
         width: 100%;
-        height: 200px;
+        height: 220px;
         gap: 16px;
         display: flex;
         border: 1px dotted red;
@@ -99,8 +97,9 @@
         justify-content: start;
 
         .video-contain {
-            width: 250px;
-            height: 170px;
+            width: 300px;
+            height: 200px;
+            border: 1px dotted red;
 
             video {
                 width: 110px;
@@ -119,7 +118,6 @@
 .drama,
 .romance {
     width: 100%;
-    height: 165px;
 
     p {
         width: 100%;
@@ -131,3 +129,49 @@
         color: #ffffff;
     }
 }
+
+/* Container für horizontales Scrollen */
+.frame167 {
+    overflow-x: auto; /* Ermöglicht horizontales Scrollen */
+    white-space: nowrap; /* Verhindert das Umbruchverhalten von Videos */
+    border: 1px solid #ccc; /* Optional: fügt einen Rand hinzu */
+    padding: 10px; /* Optional: fügt Innenabstand hinzu */
+  }
+  
+  /* Wrapper für Videos */
+  .video-wrapper {
+    display: inline-block; /* Macht den Inhalt inline, damit der Container scrollt */
+  }
+  
+  /* Styling für Videos */
+  video {
+    display: inline-block; /* Macht die Videos nebeneinander sichtbar */
+    margin-right: 10px; /* Abstand zwischen den Videos */
+    max-height: 200px; /* Optional: Höhe der Videos, anpassbar */
+    border-radius: 5px; /* Optional: Ecken der Videos abrunden */
+  }
+  
+  /* Scrollbalken für Webkit-Browser */
+  .frame167::-webkit-scrollbar {
+    width: 12px; /* Breite des vertikalen Scrollbalkens */
+    height: 12px; /* Höhe des horizontalen Scrollbalkens */
+  }
+  
+  .frame167::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Hintergrund des Scrollbalkens */
+  }
+  
+  .frame167::-webkit-scrollbar-thumb {
+    background: #888; /* Farbe des Scrollbalken-Schiebers */
+    border-radius: 6px; /* Abrunden der Ecken des Schiebers */
+  }
+  
+  .frame167::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Farbe des Schiebers bei Hover */
+  }
+  
+  /* Scrollbalken für Firefox */
+  .frame167 {
+    scrollbar-width: thin; /* Breite des Scrollbalkens (auto, thin, oder none) */
+    scrollbar-color: #888 #f1f1f1; /* Farbe des Schiebers und des Tracks */
+  }

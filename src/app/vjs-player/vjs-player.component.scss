@@ -1,11 +1,40 @@
-@import 'video.js/dist/video-js.css';
-@import "./../../styles.scss";
+.vjs-icon-play,
+.video-js .vjs-play-control .vjs-icon-placeholder,
+.video-js .vjs-big-play-button .vjs-icon-placeholder:before {
+    font-family: VideoJS !important;
+}
 
-.video-js .vjs-progress-holder {
-    display: none;
-  }
+.vjs-icon-play-circle {
+    font-family: VideoJS !important;
+}
 
-  .video-js .vjs-play-control {
-    color: #fff; /* Ändert die Farbe des Play-Buttons */
-    background-color: #000; /* Ändert die Hintergrundfarbe des Play-Buttons */
-  }
+.vjs-icon-pause,
+.video-js .vjs-play-control.vjs-playing .vjs-icon-placeholder {
+    font-family: VideoJS !important;
+}
+
+.vjs-icon-picture-in-picture-enter,
+.video-js .vjs-picture-in-picture-control .vjs-icon-placeholder {
+    font-family: VideoJS !important;
+}
+.vjs-icon-fullscreen-enter,
+.video-js .vjs-fullscreen-control .vjs-icon-placeholder {
+    font-family: VideoJS !important;
+}
+
+.vjs-icon-volume-mute,
+.video-js .vjs-mute-control.vjs-vol-0 .vjs-icon-placeholder {
+    font-family: VideoJS !important;
+}
+
+.vjs-icon-volume-high,
+.video-js .vjs-mute-control .vjs-icon-placeholder {
+    font-family: VideoJS !important;
+}
+
+.vjs-icon-circle,
+.vjs-seek-to-live-control .vjs-icon-placeholder,
+.video-js .vjs-volume-level,
+.video-js .vjs-play-progress {
+    font-family: VideoJS !important;
+}
