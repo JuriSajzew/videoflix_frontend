@@ -72,6 +72,10 @@
     line-height: 19.53px;
     text-align: left;
 
+    @media (min-width: 320px) and (max-width: 900px) {
+        font-size: 12px;
+    }
+
     img {
         width: 16px;
         height: 16px;
@@ -108,3 +112,5 @@
         }
     }
 }
+
+

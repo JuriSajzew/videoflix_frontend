@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,10 @@ export class AuthService {
 
   public LogOut(){
     localStorage.removeItem('token');
+  }
+
+  register(userData: { username: string; email: string; password: string }): Observable<any> {
+    const url = environment.baseUrl + '/register/'
+    return this.http.post(url, userData);
   }
 }
