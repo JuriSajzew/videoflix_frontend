@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service/auth.service';
-import { VideoService } from '../services/video.service';
+import { VideoService } from '../services/video.service/video.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { VjsPlayerComponent } from "../vjs-player/vjs-player.component";

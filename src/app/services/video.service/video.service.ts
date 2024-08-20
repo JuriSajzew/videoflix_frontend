@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../../environments/environment.development';
 import { lastValueFrom } from 'rxjs';
-import { Video } from '../startscreen/startscreen.component';
+import { Video } from '../../startscreen/startscreen.component';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
