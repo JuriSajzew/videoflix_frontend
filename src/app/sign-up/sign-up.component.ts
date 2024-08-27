@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service/auth.service';
 import { DialogSignupComponent } from '../dialog-signup/dialog-signup.component';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
+import { SharedService } from '../services/shared.service/shared.service';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -20,7 +21,7 @@ import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialo
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
   password: string = '';
   confirmPassword: string = '';
   passwordFieldType: string = 'password';
@@ -33,7 +34,18 @@ export class SignUpComponent {
     private router: Router,
     private as: AuthService,
     private dialog: MatDialog,
+    private sharedService: SharedService,
   ) { }
+
+  ngOnInit(): void {
+    const savedEmail = this.sharedService.getEmail();
+
+    if (savedEmail) {
+      this.emailaddress = savedEmail;
+    } else {
+      this.emailaddress = '';
+    }
+  }
 
   togglePasswordVisibility(): void {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';

@@ -43,6 +43,5 @@ export class LoginComponent {
   loginButton() {
     this.ls.login(this.email, this.password);
     console.log('Name ', this.email);
-    console.log('Pasword ', this.password);
   }
 }

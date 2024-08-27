@@ -13,11 +13,11 @@
             <h3>Watch whenever you want wherever you want</h3>
             <p>Enter your email to create or restart your subscription</p>
 
-            <form class="signUp-contain">
+            <form class="signUp-contain" (ngSubmit)="startSignUp(email)">
                 <div class="email-contain">
-                    <input type="email" placeholder="Email Address">
+                    <input type="email" placeholder="Email Address" [(ngModel)]="email" name="email">
                 </div>
-                <button class="signUp-button" (click)="startSignUp()">Sign Up ></button>
+                <button class="signUp-button" type="submit">Sign Up ></button>
             </form>
         </div>
     </div>

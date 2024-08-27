@@ -4,10 +4,10 @@ section {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 800px;
+    bottom: 40px;
+    left: 0;
 
-    @media (min-width: 320px) and (max-width: 900px) {
-        top: 750px;
+    @media (min-width: 320px) and (max-width: 800px) {
     }
 }
 .footer-contain {

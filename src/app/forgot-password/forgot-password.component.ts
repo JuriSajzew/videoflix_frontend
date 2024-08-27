@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ForgotPasswordService } from '../services/forgot.service/forgot-password.service';
+import { DialogForgotPasswordComponent } from '../dialog-forgot-password/dialog-forgot-password.component';
+import { MatDialog } from '@angular/material/dialog';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-forgot-password',
@@ -16,54 +17,55 @@ import { ForgotPasswordService } from '../services/forgot.service/forgot-passwor
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.scss'
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotPasswordComponent {
   email: string = '';
   isEmailValid: boolean = false;
   errorMessage: string = '';
   validEmails: string[] = [];
 
   constructor(
-    private fp: ForgotPasswordService,
     private router: Router,
     private http: HttpClient,
+    private dialog: MatDialog,
   ) { }
 
-  ngOnInit(): void {
-    this.loadEmails();
+  checkEmail() {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    this.isEmailValid = emailPattern.test(this.email);
+    console.log('Validierung Email:', this.isEmailValid);
   }
 
-  loadEmails(): void {
-    this.fp.getEmails().subscribe(
-      (emails: any[]) => {  // 'emails' ist ein Array von Objekten
-        this.validEmails = emails.map(e => e.email);  // Extrahiere die E-Mails
-      },
-      (error) => {
-        console.error('Fehler beim Laden der E-Mail-Adressen:', error);
-      }
-    );
-  }
-
-  checkEmail(): void {
-    console.log('Eingegebene E-Mail:', this.email);
-    console.log('Gültige E-Mails:', this.validEmails);
-  
-    // Normalisiere die E-Mails im validEmails Array zur Sicherheit
-    const normalizedValidEmails = this.validEmails.map(email => email.trim().toLowerCase());
-  
-    this.isEmailValid = normalizedValidEmails.includes(this.email.trim().toLowerCase());
-  
-    console.log('Normalisierte gültige E-Mails:', normalizedValidEmails);
-    console.log('Normalisierte eingegebene E-Mail:', this.email.trim().toLowerCase());
-    console.log('Ist die E-Mail gültig?', this.isEmailValid);
+  startlogIn() {
+    this.router.navigate(['/login'])
   }
 
   forgotPassword() {
-    if (this.isEmailValid) {
-      this.fp.forgotPassword(this.email);
-      this.email = '';
-      this.router.navigateByUrl('/login');
-    } else {
-      this.errorMessage = 'Die eingegebene E-Mail-Adresse ist nicht registriert.';
+    console.log('Email', environment.baseUrl)
+    if (!this.isEmailValid) {
+      this.errorMessage = 'Please enter a valid email address.';
+      return;
     }
+
+    // Anfragen an das Backend senden, um zu überprüfen, ob die E-Mail registriert ist
+    this.http.post(environment.baseUrl + '/check_email/', { email: this.email })
+      .subscribe(
+        response => {
+          // Wenn die E-Mail gültig ist, sende die Anfrage zum Zurücksetzen des Passworts
+          this.http.post(environment.baseUrl + '/password_reset/', { email: this.email })
+            .subscribe(
+              () => {
+                this.dialog.open(DialogForgotPasswordComponent);
+                alert('An email has been sent with instructions to reset your password.');
+                this.errorMessage = '';
+              },
+              error => {
+                this.errorMessage = 'An error occurred while sending the email. Please try again later.';
+              }
+            );
+        },      
+        error => {
+          this.errorMessage = 'This email address is not registered.';
+        }
+      );
   }
 }
