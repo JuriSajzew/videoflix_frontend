@@ -22,6 +22,7 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
     aspectRatio: string,
     autoplay: boolean,
     controls?: boolean; // Füge die controls-Eigenschaft hinzu
+    poster?:string,
     sources: {
       src: string,
       type: string,
@@ -31,7 +32,7 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
       aspectRatio: '16:9',
       autoplay: false,
       controls: true,
-      sources: []
+      sources: [],
     };
 
   player!: videojs.Player;

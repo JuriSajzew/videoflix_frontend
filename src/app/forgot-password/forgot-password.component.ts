@@ -3,21 +3,25 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { DialogForgotPasswordComponent } from '../dialog-forgot-password/dialog-forgot-password.component';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../environments/environment';
+import { MatCardModule } from '@angular/material/card';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-forgot-password',
   standalone: true,
   imports: [
     FormsModule,
-    CommonModule
-  ],
+    CommonModule,
+    MatCardModule,
+    FooterComponent
+],
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.scss'
 })
 export class ForgotPasswordComponent {
+  showCard = false
   email: string = '';
   isEmailValid: boolean = false;
   errorMessage: string = '';
@@ -54,18 +58,24 @@ export class ForgotPasswordComponent {
           this.http.post(environment.baseUrl + '/password_reset/', { email: this.email })
             .subscribe(
               () => {
-                this.dialog.open(DialogForgotPasswordComponent);
-                alert('An email has been sent with instructions to reset your password.');
-                this.errorMessage = '';
+                this.showCard = true;
+                this.errorMessage = 'An email has been sent with instructions to reset your password.';
               },
               error => {
                 this.errorMessage = 'An error occurred while sending the email. Please try again later.';
               }
             );
-        },      
+        },
         error => {
           this.errorMessage = 'This email address is not registered.';
         }
       );
+  }
+  closeCard() {
+    this.showCard = false;
+  }
+
+  onClose(){
+    
   }
 }

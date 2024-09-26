@@ -4,11 +4,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../services/shared.service/shared.service';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [FormsModule, CommonModule, HttpClientModule],
+  imports: [FormsModule, CommonModule, HttpClientModule, FooterComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'
 })

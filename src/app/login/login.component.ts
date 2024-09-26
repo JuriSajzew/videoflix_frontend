@@ -7,6 +7,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service/auth.service';
 import { environment } from '../../environments/environment.development';
 import { lastValueFrom } from 'rxjs';
+import { FooterComponent } from "../footer/footer.component";
 
 
 @Component({
@@ -16,8 +17,9 @@ import { lastValueFrom } from 'rxjs';
     MatCheckboxModule,
     FormsModule,
     RouterModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    FooterComponent,
+],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

@@ -17,8 +17,13 @@
                         aspectRatio: '16:9', 
                         autoplay: false, 
                         controls: true, 
-                        sources: [{ src: video.video_file, 
-                        type: 'video/mp4' }]}">
+                        poster: video.cover_image,
+                        sources: [
+                            { src: getVideoSource(video, '720p'), type: 'application/x-mpegURL' },
+                            { src: getVideoSource(video, '480p'), type: 'application/x-mpegURL' },
+                            { src: getVideoSource(video, '1080p'), type: 'application/x-mpegURL' }
+                        ]     
+                    }">
                     </app-vjs-player>
                 </div>
             </div>
@@ -32,8 +37,9 @@
                         aspectRatio: '16:9', 
                         autoplay: false, 
                         controls: true, 
+                        poster: video.cover_image,
                         sources: [{ src: video.video_file, 
-                        type: 'video/mp4' }]}">
+                     type: 'video/mp4' }]}">
                     </app-vjs-player>
                 </div>
             </div>
@@ -46,7 +52,8 @@
                         fluid: true, 
                         aspectRatio: '16:9', 
                         autoplay: false, 
-                        controls: true, 
+                        controls: true,
+                        poster: video.cover_image,
                         sources: [{ src: video.video_file, 
                         type: 'video/mp4' }]}">
                     </app-vjs-player>
@@ -62,6 +69,7 @@
                         aspectRatio: '16:9', 
                         autoplay: false, 
                         controls: true, 
+                        poster: video.cover_image,
                         sources: [{ src: video.video_file, 
                         type: 'video/mp4' }]}">
                     </app-vjs-player>

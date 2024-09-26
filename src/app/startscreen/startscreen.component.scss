@@ -8,13 +8,7 @@
     align-items: center;
     width: 100vw;
     max-width: 100%;
-    height: 150vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.55) 40.46%, rgba(0, 0, 0, 0.8)),
-        url("./../../assets/background_login.jpeg");
+    background-color: #141414;
 }
 
 .nav-contain {
@@ -78,28 +72,53 @@
 .video-content {
     width: 100vw;
     max-width: 1440px;
-    margin-left: 96px;
+    padding-left: 96px;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     gap: 48px;
-    border: 1px dotted green;
+    padding-bottom: 50px;
+
+    @media (min-width: 320px) and (max-width: 900px) {
+        padding-left: 0;
+    }
 
     .frame167 {
         width: 100%;
-        height: 220px;
+        max-width: 1260px; /* Maximale Breite festlegen */
+        height: 190px;
         gap: 16px;
-        display: flex;
-        border: 1px dotted red;
         display: flex;
         align-items: center;
         justify-content: start;
+        overflow-x: auto; /* Erlaubt horizontales Scrollen */
+        overflow-y: hidden; /* Vertikales Scrollen verstecken */
+        white-space: nowrap; /* Verhindert Umbruch der Inhalte */
+
+         /* Scrollbar-Styling für Webkit-Browser (Chrome, Safari) */
+         &::-webkit-scrollbar {
+            height: 12px; /* Höhe der Scrollbar */
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent; /* Hintergrund des Scroll-Tracks */
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #2e3edf; /* Farbe des Scrollbalkens */
+            border-radius: 6px; /* Abgerundete Ecken */
+            border: 3px solid transparent; /* Außenabstand, für besseres Erscheinungsbild */
+            background-clip: content-box; /* Verhindert Überlappung mit dem Rand */
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: darken(#2e3edf, 10%); /* Dunklere Farbe beim Hover */
+        }
 
         .video-contain {
             width: 300px;
-            height: 200px;
-            border: 1px dotted red;
+            flex-shrink: 0; /* Verhindert, dass die Elemente schrumpfen */
 
             video {
                 width: 110px;
@@ -129,49 +148,3 @@
         color: #ffffff;
     }
 }
-
-/* Container für horizontales Scrollen */
-.frame167 {
-    overflow-x: auto; /* Ermöglicht horizontales Scrollen */
-    white-space: nowrap; /* Verhindert das Umbruchverhalten von Videos */
-    border: 1px solid #ccc; /* Optional: fügt einen Rand hinzu */
-    padding: 10px; /* Optional: fügt Innenabstand hinzu */
-  }
-  
-  /* Wrapper für Videos */
-  .video-wrapper {
-    display: inline-block; /* Macht den Inhalt inline, damit der Container scrollt */
-  }
-  
-  /* Styling für Videos */
-  video {
-    display: inline-block; /* Macht die Videos nebeneinander sichtbar */
-    margin-right: 10px; /* Abstand zwischen den Videos */
-    max-height: 200px; /* Optional: Höhe der Videos, anpassbar */
-    border-radius: 5px; /* Optional: Ecken der Videos abrunden */
-  }
-  
-  /* Scrollbalken für Webkit-Browser */
-  .frame167::-webkit-scrollbar {
-    width: 12px; /* Breite des vertikalen Scrollbalkens */
-    height: 12px; /* Höhe des horizontalen Scrollbalkens */
-  }
-  
-  .frame167::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Hintergrund des Scrollbalkens */
-  }
-  
-  .frame167::-webkit-scrollbar-thumb {
-    background: #888; /* Farbe des Scrollbalken-Schiebers */
-    border-radius: 6px; /* Abrunden der Ecken des Schiebers */
-  }
-  
-  .frame167::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Farbe des Schiebers bei Hover */
-  }
-  
-  /* Scrollbalken für Firefox */
-  .frame167 {
-    scrollbar-width: thin; /* Breite des Scrollbalkens (auto, thin, oder none) */
-    scrollbar-color: #888 #f1f1f1; /* Farbe des Schiebers und des Tracks */
-  }

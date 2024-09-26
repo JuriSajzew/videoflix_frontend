@@ -6,6 +6,7 @@ import { AuthService } from '../services/auth.service/auth.service';
 import { DialogSignupComponent } from '../dialog-signup/dialog-signup.component';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
 import { SharedService } from '../services/shared.service/shared.service';
+import { FooterComponent } from "../footer/footer.component";
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -16,8 +17,9 @@ import { SharedService } from '../services/shared.service/shared.service';
     MatDialogClose,
     MatDialogContent,
     MatDialogTitle,
-    MatDialogModule
-  ],
+    MatDialogModule,
+    FooterComponent
+],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
@@ -68,6 +70,8 @@ export class SignUpComponent implements OnInit {
       return;
     }
 
+    console.log(this.emailaddress);
+
     const registrationData = {
       username: this.emailaddress,
       email: this.emailaddress,
@@ -85,7 +89,9 @@ export class SignUpComponent implements OnInit {
       },
       error: (error) => {
         console.error('Registration failed', error);
-        this.registerError = 'Registration failed. Please try again.';
+        
+        this.registerError = error;
+        console.log('das ist der Feler', this.registerError);
       }
     });
   }

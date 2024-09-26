@@ -7,18 +7,21 @@
         <button class="log-in-button" (click)="startlogIn()">Log in</button>
     </div>
 
-    <div class="header-contain">
-        <div class="headline">
-            <h1>Movies, TV shows, and more</h1>
-            <h3>Watch whenever you want wherever you want</h3>
-            <p>Enter your email to create or restart your subscription</p>
+    <div class="content-contain">
+        <div class="header-contain">
+            <div class="headline">
+                <h1>Movies, TV shows, and more</h1>
+                <h3>Watch whenever you want wherever you want</h3>
+                <p>Enter your email to create or restart your subscription</p>
 
-            <form class="signUp-contain" (ngSubmit)="startSignUp(email)">
-                <div class="email-contain">
-                    <input type="email" placeholder="Email Address" [(ngModel)]="email" name="email">
-                </div>
-                <button class="signUp-button" type="submit">Sign Up ></button>
-            </form>
+                <form class="signUp-contain" (ngSubmit)="startSignUp(email)">
+                    <div class="email-contain">
+                        <input type="email" placeholder="Email Address" [(ngModel)]="email" name="email">
+                    </div>
+                    <button class="signUp-button" type="submit">Sign Up ></button>
+                </form>
+            </div>
         </div>
     </div>
+    <app-footer></app-footer>
 </div>

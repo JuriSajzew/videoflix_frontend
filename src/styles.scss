@@ -29,6 +29,14 @@ h2 {
     }
 }
 
+.content-contain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .content {
     width: 520px;
     height: 505px;
@@ -37,7 +45,6 @@ h2 {
     box-sizing: border-box;
     gap: 32px;
     background: #ffffff;
-    margin-top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -209,6 +216,90 @@ h2 {
         img {
             width: 16px;
             height: 16px;
+        }
+    }
+}
+
+.footer-container {
+    width: 100vw;
+    height: 108px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 320px) and (max-width: 800px) {
+    }
+
+    .footer-contain {
+        width: 100%;
+        height: 43px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            row-gap: 40px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            width: 100px;
+        }
+    }
+}
+
+.showCard {
+    width: 540px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #2e3edf;
+    position: absolute;
+    bottom: 1%;
+    left: 0;
+    overflow: hidden;
+    gap: 24px;
+
+    .red-color {
+        width: 38px;
+        height: 115px;
+        background-color: #ff002e;
+    }
+
+    .warn-text-contain {
+        width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+        border-right: 1px solid #ffffff;
+    }
+
+    .warning {
+        width: 32px;
+        height: 32px;
+    }
+
+    .text {
+        width: 372px;
+        height: 42px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+    }
+
+    .close-contain {
+        width: 24px;
+        height: 24px;
+
+        &:hover {
+            cursor: pointer;
         }
     }
 }

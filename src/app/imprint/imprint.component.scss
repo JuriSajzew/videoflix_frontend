@@ -1,0 +1,33 @@
+@import "./../../fonts.styles.scss";
+@import "./../../styles.scss";
+
+.imprint-contain {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #141414;
+
+    .imprint-text {
+        width: 100%;
+        max-width: 1440px;
+        padding: 10px 96px;
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+        justify-content: center;
+
+        @media (min-width: 320px) and (max-width: 900px) {
+            padding: 10px 16px;
+        }
+
+        h2 {
+            text-align: start;
+        }
+
+        span {
+            color: #ffff;
+        }
+    }
+}

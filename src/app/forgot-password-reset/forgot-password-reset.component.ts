@@ -4,14 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../environments/environment';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-forgot-password-reset',
   standalone: true,
   imports: [
     FormsModule,
-    CommonModule
-  ],
+    CommonModule,
+    FooterComponent
+],
   templateUrl: './forgot-password-reset.component.html',
   styleUrl: './forgot-password-reset.component.scss'
 })

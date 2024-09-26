@@ -6,44 +6,50 @@
         </div>
         <button class="log-in-button" (click)="logIn()">Log in</button>
     </div>
-
-    <form #registerForm="ngForm" novalidate class="content">
-        <h2>Sign Up</h2>
-        <div class="frame178">
-            <div class="email-contain">
-                <input class="email" type="email" placeholder="Email Address" [(ngModel)]="emailaddress" name="email"
-                    required #email="ngModel" [class.error]="email.invalid && email.touched" email />
-                <div class="error-message-contain">
-                    <div *ngIf="email.invalid && email.touched" class="error-message">
-                        <img src="./../../assets/warning.png" alt="" /> Email is required and must be valid.
+    <div class="content-contain">
+        <form #registerForm="ngForm" novalidate class="content">
+            <h2>Sign Up</h2>
+            <div class="frame178">
+                <div class="email-contain">
+                    <input class="email" type="email" placeholder="Email Address" [(ngModel)]="emailaddress"
+                        name="email" required #email="ngModel" [class.error]="email.invalid && email.touched" email />
+                    <div class="error-message-contain">
+                        <div *ngIf="email.invalid && email.touched" class="error-message">
+                            <img src="./../../assets/warning.png" alt="" /> Email is required and must be valid.
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="password-contain">
-                <input class="password" [type]="passwordFieldType" placeholder="Password" [(ngModel)]="password"
-                    name="password" required minlength="6" #passwordField="ngModel"
-                    (ngModelChange)="validatePasswords()" />
-                <img src="./../../assets/visibility.png" alt="Toggle visibility" (click)="togglePasswordVisibility()"
-                    style="cursor:pointer" />
-            </div>
-            <div>
                 <div class="password-contain">
-                    <input class="password" [type]="passwordFieldType" placeholder="Confirm Password"
-                        [(ngModel)]="confirmPassword" name="confirmPassword" required minlength="6"
-                        #confirmPasswordField="ngModel" (ngModelChange)="validatePasswords()" />
+                    <input class="password" [type]="passwordFieldType" placeholder="Password" [(ngModel)]="password"
+                        name="password" required minlength="6" #passwordField="ngModel"
+                        (ngModelChange)="validatePasswords()" />
                     <img src="./../../assets/visibility.png" alt="Toggle visibility"
                         (click)="togglePasswordVisibility()" style="cursor:pointer" />
                 </div>
-                <div class="error-message-contain">
-                    <div *ngIf="passwordError" class="error-message">
-                        <img src="./../../assets/warning.png" alt="" /> {{ passwordError }}
+                <div>
+                    <div class="password-contain">
+                        <input class="password" [type]="passwordFieldType" placeholder="Confirm Password"
+                            [(ngModel)]="confirmPassword" name="confirmPassword" required minlength="6"
+                            #confirmPasswordField="ngModel" (ngModelChange)="validatePasswords()" />
+                        <img src="./../../assets/visibility.png" alt="Toggle visibility"
+                            (click)="togglePasswordVisibility()" style="cursor:pointer" />
+                    </div>
+                    <div class="error-message-contain">
+                        <div *ngIf="passwordError" class="error-message">
+                            <img src="./../../assets/warning.png" alt="" /> {{ passwordError }}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="get-started-button">
-            <button type="submit" [disabled]="registerForm.invalid || passwordError" (click)="register()">Get
-                Started</button>
-        </div>
-    </form>
+            <div class="get-started-button">
+                <button type="submit"
+                    [disabled]="email.invalid || passwordField.invalid || confirmPasswordField.invalid || passwordError"
+                    (click)="register()">Get
+                    Started</button>
+            </div>
+        </form>
+    </div>
+
+
+<app-footer></app-footer>

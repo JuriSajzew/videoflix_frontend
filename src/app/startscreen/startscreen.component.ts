@@ -14,6 +14,10 @@ export interface Video {
   created_at: string;
   category: string;
   video_file: string;
+  cover_image: string;
+  video_urls:{
+    [key: string]: string;
+  }
 
 }
 @Component({
@@ -40,6 +44,7 @@ export class StartscreenComponent implements OnInit {
   dramaVideos: Video[] = [];
   romanceVideos: Video[] = [];
   newVideos: Video[] = [];
+  cover_image: Video[] = [];
 
 
   constructor(
@@ -82,5 +87,9 @@ export class StartscreenComponent implements OnInit {
     }).sort((a, b) => {
       return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
     });
+  }
+
+  getVideoSource(video: Video, quality: '480p' | '720p' | '1080p'): string {
+    return video.video_urls[quality] || video.video_urls['720p']; // Fallback auf 720p
   }
 }
