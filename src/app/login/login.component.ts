@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service/auth.service';
 import { environment } from '../../environments/environment.development';
 import { lastValueFrom } from 'rxjs';
 import { FooterComponent } from "../footer/footer.component";
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -19,7 +20,8 @@ import { FooterComponent } from "../footer/footer.component";
     RouterModule,
     HttpClientModule,
     FooterComponent,
-],
+    CommonModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -28,6 +30,7 @@ export class LoginComponent {
   checked = false;
   password: string = '';
   passwordFieldType: string = 'password';
+  isPasswordValid: boolean = false;
 
 
 
@@ -41,6 +44,16 @@ export class LoginComponent {
     private http: HttpClient,
     private ls: LoginService,
   ) { }
+
+  checkPassword() {
+    const passwordPattern = /^.{8,}$/; // Mindestlänge von 8 Zeichen
+    this.isPasswordValid = passwordPattern.test(this.password);
+    console.log('Validierung Passwort:', this.isPasswordValid);
+  }
+
+  loginContain() {
+
+  }
 
   loginButton() {
     this.ls.login(this.email, this.password);

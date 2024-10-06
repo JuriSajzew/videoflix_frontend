@@ -42,8 +42,8 @@
                 </div>
             </div>
 
-            <div class="get-started-button">
-                <button type="submit"
+            <div class="send-button">
+                <button type="submit" class="button-active"
                     [disabled]="email.invalid || passwordField.invalid || confirmPasswordField.invalid || passwordError"
                     (click)="register()">Get
                     Started</button>

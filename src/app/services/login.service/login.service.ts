@@ -19,7 +19,12 @@ export class LoginService {
       console.log('Hier die Anmeldung ', resp);
 
       localStorage.setItem('token', resp['token'])
-      this.router.navigateByUrl('/videocontent');
+
+      this.router.navigate(['/loadwindow']);
+
+      setTimeout(() => {
+        this.router.navigate(['/videocontent']);
+      }, 8000);
 
     } catch (e) {
       //Show error message

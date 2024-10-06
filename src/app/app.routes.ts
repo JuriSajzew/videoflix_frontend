@@ -7,6 +7,7 @@ import { StartscreenComponent } from './startscreen/startscreen.component';
 import { ForgotPasswordResetComponent } from './forgot-password-reset/forgot-password-reset.component';
 import { ImprintComponent } from './imprint/imprint.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { LoadWindowComponent } from './load-window/load-window.component';
 
 export const routes: Routes = [
     //{ path: '', component: LoginComponent }
@@ -19,5 +20,6 @@ export const routes: Routes = [
     { path: 'videocontent', component: StartscreenComponent },
     { path: 'imprint', component: ImprintComponent },
     { path: 'privacy-policy', component: PrivacyPolicyComponent },
+    { path: 'loadwindow', component: LoadWindowComponent },
 
 ];

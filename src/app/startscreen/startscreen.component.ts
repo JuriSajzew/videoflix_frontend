@@ -88,8 +88,4 @@ export class StartscreenComponent implements OnInit {
       return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
     });
   }
-
-  getVideoSource(video: Video, quality: '480p' | '720p' | '1080p'): string {
-    return video.video_urls[quality] || video.video_urls['720p']; // Fallback auf 720p
-  }
 }

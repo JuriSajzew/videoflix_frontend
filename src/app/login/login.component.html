@@ -6,38 +6,41 @@
         </div>
     </div>
     <div class="content-contain">
-        <div class="content">
-            <h2>Log in</h2>
-            <div class="frame178">
-                <div class="email-contain">
-                    <input class="email" type="email" placeholder="Email Address" [(ngModel)]="email">
+        <form (ngSubmit)="loginButton()">
+            <div class="content">
+                <h2>Log in</h2>
+                <div class="frame178">
+                    <div class="email-contain">
+                        <input class="email" type="email" placeholder="Email Address" [(ngModel)]="email" name="email">
+                    </div>
+                    <div class="password-contain">
+                        <input class="password" [type]="passwordFieldType" placeholder="Password"
+                            [(ngModel)]="password" name="password" (input)="checkPassword()">
+                        <img src="./../../assets/visibility.png" alt="Toggle visibility"
+                            (click)="togglePasswordVisibility()" style="cursor:pointer">
+                    </div>
+                    <div class="checkbox-contain">
+                        <mat-checkbox class="example-margin" color="accent" [(ngModel)]="checked" name="rememberMe">
+                            <span>Remember me</span>
+                        </mat-checkbox>
+                    </div>
                 </div>
-                <div class="password-contain">
-                    <input class="password" [type]="passwordFieldType" placeholder="Password" [(ngModel)]="password">
-                    <img src="./../../assets/visibility.png" alt="Toggle visibility"
-                        (click)="togglePasswordVisibility()" style="cursor:pointer">
-                </div>
-                <div class="checkbox-contain">
-                    <mat-checkbox class="example-margin" color="accent" [(ngModel)]="checked">
-                        <span>Remember me</span>
-                    </mat-checkbox>
-                </div>
-            </div>
 
-            <div class="frame179">
-                <div class="frame9">
-                    <button (click)="loginButton()">Log in</button>
-                </div>
-                <div class="frame159">
-                    <a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active">Forgot password?</a>
-                </div>
-                <div class="frame10">
-                    <span>New to Videoflix?</span>
-                    <a [routerLink]="['/signup']" routerLinkActive="router-link-active">Sign Up now</a>
+                <div class="frame179">
+                    <div class="send-button">
+                        <button class="button-active" [disabled]="!isPasswordValid">Log in</button>
+                    </div>
+                    <div class="frame159">
+                        <a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active">Forgot
+                            password?</a>
+                    </div>
+                    <div class="frame10">
+                        <span>New to Videoflix?</span>
+                        <a [routerLink]="['/signup']" routerLinkActive="router-link-active">Sign Up now</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-
     <app-footer></app-footer>
 </div>
