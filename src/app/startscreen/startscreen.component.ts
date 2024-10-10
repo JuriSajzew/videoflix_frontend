@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { VjsPlayerComponent } from "../vjs-player/vjs-player.component";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth.interceptor/auth-interceptor.service';
+import { FormsModule } from '@angular/forms';
 
 export interface Video {
   id: number;
@@ -15,8 +16,8 @@ export interface Video {
   category: string;
   video_file: string;
   cover_image: string;
-  video_urls:{
-    [key: string]: string;
+  video_urls: {
+    [quality: string]: string | '';
   }
 
 }
@@ -25,10 +26,11 @@ export interface Video {
   standalone: true,
   imports: [
     CommonModule,
-    VjsPlayerComponent
+    VjsPlayerComponent,
+    FormsModule
   ],
   templateUrl: './startscreen.component.html',
-  styleUrl: './startscreen.component.scss',
+  styleUrls: ['./startscreen.component.scss'],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -38,7 +40,7 @@ export interface Video {
   ]
 })
 export class StartscreenComponent implements OnInit {
-
+  @ViewChild(VjsPlayerComponent, { static: false }) vjsPlayerComponent!: VjsPlayerComponent;
   allVideos: Video[] = [];
   documentaryVideos: Video[] = [];
   dramaVideos: Video[] = [];
@@ -46,6 +48,7 @@ export class StartscreenComponent implements OnInit {
   newVideos: Video[] = [];
   cover_image: Video[] = [];
 
+  selectedQuality: string = '720p';  // Standardqualität
 
   constructor(
     private as: AuthService,

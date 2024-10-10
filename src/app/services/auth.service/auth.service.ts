@@ -34,37 +34,24 @@ export class AuthService {
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
 
-    if (error.error instanceof ErrorEvent) {
-      // Client-seitiger Fehler
-      errorMessage = `Client Error: ${error.error.message}`;
-    } else {
-      // Server-seitiger Fehler
-      if (error.error) {
-        // Überprüfe die Struktur des serverseitigen Fehlers
-        if (typeof error.error === 'string') {
-          errorMessage = error.error; // Wenn die Fehlermeldung ein einfacher String ist
-        } else if (error.error.errors) {
-          // Fehlerdetails in einem bestimmten Format
-          const errorDetails = error.error.errors;
-          if (typeof errorDetails === 'object') {
-            // Extrahiere und kombiniere die Fehlermeldungen
-            errorMessage = Object.values(errorDetails).flat().join(', ');
-          } else {
-            errorMessage = errorDetails;
-          }
-        } else if (error.error.error) {
-          errorMessage = error.error.error; // Eine allgemeine Fehlermeldung
-        } else {
-          errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-        }
+    if (error instanceof HttpErrorResponse) {
+      // Überprüfe den Statuscode des Fehlers
+      if (error.status === 0) {
+        // Netz- oder Serverfehler
+        errorMessage = 'Network or server error. Please check your connection.';
+      } else if (error.status === 401) {
+        // Authentifizierungsfehler
+        errorMessage = 'Register failed. Please check your details.';
       } else {
-        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        // Allgemeine Fehlermeldung bei anderen HTTP-Fehlern
+        errorMessage = 'Register failed. Please check your details.';
       }
     }
-
+  
     // Protokolliere die endgültige Fehlermeldung für Debugging-Zwecke
     console.log('Server error message:', errorMessage);
-
-    return throwError(() => new Error(errorMessage));
+  
+    // Wirf die Fehlermeldung als Observable Error
+    return throwError(() => errorMessage);
   }
 }

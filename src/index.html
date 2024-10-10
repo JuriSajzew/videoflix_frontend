@@ -7,12 +7,20 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
+  <!--Video.js CSS-->
   <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet" />
   <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet" />
+
+  <!-- Video.js JavaScript -->
+<script src="https://unpkg.com/video.js@8/dist/video.min.js"></script>
+<script src="https://unpkg.com/videojs-quality-selector-hls@1.1.1/dist/videojs-quality-selector-hls.min.js"></script>
+  <!--fonts-->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--AOS-->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!--Cookieboot-->
   <script id="cookierobot" src="https://admin.cookierobot.info/apps/X2NiRDUwNzdfY2R0MTcyNTQ1MzQ0M19jYnVwZnJlZQ.js" data-blockingmode="auto" type="text/javascript"></script>
 </head>
 
@@ -21,6 +29,11 @@
 </body>
 <script>
   AOS.init();
+</script>
+<script>
+  var player = videojs('my-video');
+
+  player.qualitySelectorHls();
 </script>
 
 </html>

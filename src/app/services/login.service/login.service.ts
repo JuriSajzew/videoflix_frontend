@@ -13,7 +13,7 @@ export class LoginService {
     private router: Router,
   ) { }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string): Promise<string | null> {
     try {
       let resp: any = await this.as.loginWithUsernameAndPassword(email, password);
       console.log('Hier die Anmeldung ', resp);
@@ -26,26 +26,20 @@ export class LoginService {
         this.router.navigate(['/videocontent']);
       }, 8000);
 
+      return null;
     } catch (e) {
-      //Show error message
-      // Erweiterte Fehlerbehandlung
       if (e instanceof HttpErrorResponse) {
         if (e.status === 0) {
-          console.error('Anfrage fehlgeschlagen; möglicherweise CORS- oder Netzwerkproblem:', e);
-          alert('Netzwerk- oder Serverfehler. Bitte überprüfen Sie Ihre Verbindung.');
+          return 'Network or server error. Please check your connection.';
         } else if (e.status === 401) {
-          console.error('Unauthorized:', e);
-          alert('Login fehlgeschlagen. Überprüfen Sie Ihre Anmeldedaten.');
+          return 'Login failed. Please check your login details.';
         } else {
-          console.error('Backend-Fehler:', e);
-          alert('Serverfehler. Bitte versuchen Sie es später erneut.');
+          return 'Login failed. Please check your login details.';
         }
       } else {
-        console.error('Unbekannter Fehler:', e);
-        alert('Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.');
+        return 'An unknown error has occurred. Please try again.';
+
       }
-      //alert('Login ist Fehlgeschlagen');
-      //console.error('Login Error: ', e);
     }
   }
 }

@@ -19,7 +19,7 @@ import { FooterComponent } from "../footer/footer.component";
     MatDialogTitle,
     MatDialogModule,
     FooterComponent
-],
+  ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
@@ -30,6 +30,8 @@ export class SignUpComponent implements OnInit {
   passwordError: string | null = null;
   emailaddress: string = '';
   registerError: string | null = null;
+  showCard = false;
+  errorMessage: string = '';
 
 
   constructor(
@@ -82,18 +84,25 @@ export class SignUpComponent implements OnInit {
       next: (response) => {
         this.emailaddress = '',
           this.password = '',
-          this.dialog.open(DialogSignupComponent);
+          this.confirmPassword = '';
+        //this.dialog.open(DialogSignupComponent);
+        this.errorMessage = 'Registration successful! Check your emails for verification!';
+        this.showCard = true;
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 5000);
       },
       error: (error) => {
+        this.showCard = true;
+        this.errorMessage = error;
+        console.log(this.errorMessage)
         console.error('Registration failed', error);
-        
-        this.registerError = error;
-        console.log('das ist der Feler', this.registerError);
       }
     });
+  }
+
+  closeCard() {
+    this.showCard = false;
   }
 
 }

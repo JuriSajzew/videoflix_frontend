@@ -21,6 +21,10 @@
     "lib": [
       "ES2022",
       "dom"
+    ],
+    "typeRoots": [
+      "node_modules/@types", // Standardverzeichnis für Typen
+      "src/typings" // Pfad zu deinem Typenordner, wo videojs.d.ts gespeichert ist
     ]
   },
   "angularCompilerOptions": {

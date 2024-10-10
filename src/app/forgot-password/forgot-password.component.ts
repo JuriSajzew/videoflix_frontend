@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../environments/environment';
 import { MatCardModule } from '@angular/material/card';
 import { FooterComponent } from "../footer/footer.component";
+import { switchMap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-forgot-password',
@@ -16,7 +18,7 @@ import { FooterComponent } from "../footer/footer.component";
     CommonModule,
     MatCardModule,
     FooterComponent
-],
+  ],
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.scss'
 })
@@ -44,38 +46,36 @@ export class ForgotPasswordComponent {
   }
 
   forgotPassword() {
-    console.log('Email', environment.baseUrl)
     if (!this.isEmailValid) {
       this.errorMessage = 'Please enter a valid email address.';
+      this.showCard = true;
       return;
     }
 
-    // Anfragen an das Backend senden, um zu überprüfen, ob die E-Mail registriert ist
-    this.http.post(environment.baseUrl + '/check_email/', { email: this.email })
-      .subscribe(
-        response => {
-          // Wenn die E-Mail gültig ist, sende die Anfrage zum Zurücksetzen des Passworts
-          this.http.post(environment.baseUrl + '/password_reset/', { email: this.email })
-            .subscribe(
-              () => {
-                this.showCard = true;
-                this.errorMessage = 'An email has been sent with instructions to reset your password.';
-              },
-              error => {
-                this.errorMessage = 'An error occurred while sending the email. Please try again later.';
-              }
-            );
-        },
-        error => {
-          this.errorMessage = 'This email address is not registered.';
-        }
-      );
+    this.http.post(environment.baseUrl + '/check_email/', { email: this.email }).pipe(
+      switchMap(() => this.http.post(environment.baseUrl + '/password_reset/', { email: this.email })),
+      catchError(error => {
+        console.log(error.status)
+        this.errorMessage = error.status === 404
+          ? 'Send failed. Please check your Emailadress.'
+          : 'An error occurred while sending the email. Please try again later.';
+        console.log(this.errorMessage)
+        this.showCard = true;
+        return of(null);
+      })
+    ).subscribe(() => {
+      if (!this.errorMessage) {
+        this.showCard = true;
+        this.errorMessage = 'An email has been sent with instructions to reset your password.';
+      }
+    });
   }
+
   closeCard() {
     this.showCard = false;
   }
 
-  onClose(){
-    
+  onClose() {
+
   }
 }

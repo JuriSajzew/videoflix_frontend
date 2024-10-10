@@ -18,8 +18,8 @@
                         autoplay: false, 
                         controls: true, 
                         poster: video.cover_image,
-                        sources: [{ src: video.video_file, 
-                    type: 'video/m3u8' }]
+                        sources: [{ src: video.video_urls[selectedQuality] || '', 
+                    type: 'application/x-mpegURL' }]
                     }">
                     </app-vjs-player>
                 </div>
@@ -35,8 +35,8 @@
                         autoplay: false, 
                         controls: true, 
                         poster: video.cover_image,
-                        sources: [{ src: video.video_file, 
-                     type: 'video/mp4' }]}">
+                        sources: [{ src: video.video_urls[selectedQuality] || '', 
+                     type: 'application/x-mpegURL' }]}">
                     </app-vjs-player>
                 </div>
             </div>

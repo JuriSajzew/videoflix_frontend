@@ -31,6 +31,8 @@ export class LoginComponent {
   password: string = '';
   passwordFieldType: string = 'password';
   isPasswordValid: boolean = false;
+  showCard = false;
+  errorMessage: string = '';
 
 
 
@@ -55,8 +57,21 @@ export class LoginComponent {
 
   }
 
-  loginButton() {
-    this.ls.login(this.email, this.password);
+  async loginButton() {
+    const error = await this.ls.login(this.email, this.password);
+    // Wenn es einen Fehler gibt, zeige die Fehlermeldung in der Card an
+    if (error) {
+      this.errorMessage = error;
+      this.showCard = true;
+    } else {
+      // Wenn kein Fehler vorliegt, kannst du die Karte verstecken
+      this.showCard = false;
+    }
+
     console.log('Name ', this.email);
+  }
+
+  closeCard() {
+    this.showCard = false;
   }
 }

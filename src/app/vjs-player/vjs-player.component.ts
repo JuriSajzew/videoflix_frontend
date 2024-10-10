@@ -1,7 +1,6 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import videojs from 'video.js';
+import videojs, { VideoJsPlayer } from 'video.js';
 import 'video.js/dist/video-js.css';
-import 'videojs-hotkeys';
 
 @Component({
   selector: 'app-vjs-player',
@@ -21,12 +20,10 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
     fluid: boolean,
     aspectRatio: string,
     autoplay: boolean,
-    controls?: boolean; // Füge die controls-Eigenschaft hinzu
-    poster?:string,
-    sources: {
-      src: string,
-      type: string,
-    }[],
+    controls?: boolean;
+    poster?: string,
+    sources:
+    { src: string, type: string }[],
   } = {
       fluid: true,
       aspectRatio: '16:9',
@@ -35,21 +32,17 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
       sources: [],
     };
 
-  player!: videojs.Player;
+  player!: VideoJsPlayer;
 
   constructor(
     private elementRef: ElementRef,
   ) { }
 
-  // Instantiate a Video.js player OnInit
   ngOnInit() {
     if (this.target) {
-      this.player = videojs(this.target.nativeElement, this.options, function onPlayerReady() {
-        console.log('onPlayerReady', this);
+      this.player = videojs(this.target.nativeElement, this.options, () => {
+        console.log('Player ist bereit');
       });
-
-    } else {
-      console.error('Target element is not available');
     }
   }
 

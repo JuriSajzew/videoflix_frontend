@@ -44,3 +44,18 @@
     </div>
     <app-footer></app-footer>
 </div>
+
+<div *ngIf="showCard" class="showCard">
+    <div class="red-color"></div>
+    <div class="warn-text-contain">
+        <div class="warning">
+            <img src="./../../assets/ExclamationCircleFill.svg" alt="" (click)="closeCard()">
+        </div>
+        <div class="text">
+            {{ errorMessage }}
+        </div>
+    </div>
+    <div class="close-contain">
+        <img src="./../../assets/close_small.svg" alt="" (click)="closeCard()">
+    </div>
+</div>
