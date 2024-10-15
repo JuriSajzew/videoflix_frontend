@@ -16,7 +16,6 @@ export class LoginService {
   async login(email: string, password: string): Promise<string | null> {
     try {
       let resp: any = await this.as.loginWithUsernameAndPassword(email, password);
-      console.log('Hier die Anmeldung ', resp);
 
       localStorage.setItem('token', resp['token'])
 

@@ -12,22 +12,19 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
-    console.log('Token:', token); // Überprüfe, ob das Token hier korrekt ausgegeben wird
 
     if (token) {
-      console.log('Token found, adding to request');
       request = request.clone({
         setHeaders: { Authorization: `Token ${token}` }
       });
     } else {
-      console.log('No token found');
+      console.error('No token found');
     }
 
     return next.handle(request).pipe(
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            console.log('Unauthorized, redirecting to login');
             this.router.navigateByUrl('/login');
           }
         }

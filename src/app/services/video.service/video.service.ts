@@ -21,7 +21,6 @@ export class VideoService {
     if (this.isBrowser) {
       token = localStorage.getItem('token');
     }
-    console.log('Das ist der Token:', token)
     let headers = new HttpHeaders();
     if (token) {
       headers = headers.set('Authorization', 'Token ' + token);
@@ -29,7 +28,6 @@ export class VideoService {
 
 
     const url = environment.baseUrl + '/api/videos';
-    console.log('Das ist der Header:', headers);
     return lastValueFrom(this.http.get<Video[]>(url, { headers }));
 
   }

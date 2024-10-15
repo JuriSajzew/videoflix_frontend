@@ -20,7 +20,7 @@
                         poster: video.cover_image,
                         sources: [{ src: video.video_urls[selectedQuality] || '', 
                     type: 'application/x-mpegURL' }]
-                    }">
+                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">>
                     </app-vjs-player>
                 </div>
             </div>
@@ -36,7 +36,8 @@
                         controls: true, 
                         poster: video.cover_image,
                         sources: [{ src: video.video_urls[selectedQuality] || '', 
-                     type: 'application/x-mpegURL' }]}">
+                     type: 'application/x-mpegURL' }]
+                     }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">
                     </app-vjs-player>
                 </div>
             </div>
@@ -51,8 +52,9 @@
                         autoplay: false, 
                         controls: true,
                         poster: video.cover_image,
-                        sources: [{ src: video.video_file, 
-                        type: 'video/mp4' }]}">
+                       sources: [{ src: video.video_urls[selectedQuality] || '', 
+                    type: 'application/x-mpegURL' }]
+                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">>
                     </app-vjs-player>
                 </div>
             </div>
@@ -67,8 +69,9 @@
                         autoplay: false, 
                         controls: true, 
                         poster: video.cover_image,
-                        sources: [{ src: video.video_file, 
-                        type: 'video/mp4' }]}">
+                        sources: [{ src: video.video_urls[selectedQuality] || '', 
+                    type: 'application/x-mpegURL' }]
+                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">>
                     </app-vjs-player>
                 </div>
             </div>

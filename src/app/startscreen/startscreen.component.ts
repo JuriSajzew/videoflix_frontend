@@ -16,6 +16,7 @@ export interface Video {
   category: string;
   video_file: string;
   cover_image: string;
+  loop: boolean,
   video_urls: {
     [quality: string]: string | '';
   }
@@ -48,7 +49,7 @@ export class StartscreenComponent implements OnInit {
   newVideos: Video[] = [];
   cover_image: Video[] = [];
 
-  selectedQuality: string = '720p';  // Standardqualität
+  selectedQuality: string = '720p';
 
   constructor(
     private as: AuthService,
@@ -70,6 +71,18 @@ export class StartscreenComponent implements OnInit {
       this.filterNewVideos();
     } catch (e) {
       console.error(e);
+    }
+  }
+
+  onQualityChange(newQuality: string) {
+    this.selectedQuality = newQuality;
+
+     if (this.vjsPlayerComponent && this.vjsPlayerComponent.player) {
+      this.vjsPlayerComponent.player.src({ 
+        src: this.vjsPlayerComponent.videoUrls[newQuality], 
+        type: 'application/x-mpegURL' 
+      });
+      this.vjsPlayerComponent.player.play();
     }
   }
 

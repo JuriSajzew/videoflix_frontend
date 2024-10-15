@@ -38,7 +38,6 @@ export class ForgotPasswordComponent {
   checkEmail() {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     this.isEmailValid = emailPattern.test(this.email);
-    console.log('Validierung Email:', this.isEmailValid);
   }
 
   startlogIn() {
@@ -55,11 +54,9 @@ export class ForgotPasswordComponent {
     this.http.post(environment.baseUrl + '/check_email/', { email: this.email }).pipe(
       switchMap(() => this.http.post(environment.baseUrl + '/password_reset/', { email: this.email })),
       catchError(error => {
-        console.log(error.status)
         this.errorMessage = error.status === 404
           ? 'Send failed. Please check your Emailadress.'
           : 'An error occurred while sending the email. Please try again later.';
-        console.log(this.errorMessage)
         this.showCard = true;
         return of(null);
       })

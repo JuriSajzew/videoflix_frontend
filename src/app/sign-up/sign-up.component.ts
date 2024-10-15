@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service/auth.service';
-import { DialogSignupComponent } from '../dialog-signup/dialog-signup.component';
-import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
 import { SharedService } from '../services/shared.service/shared.service';
 import { FooterComponent } from "../footer/footer.component";
 @Component({
@@ -13,11 +11,7 @@ import { FooterComponent } from "../footer/footer.component";
   imports: [
     CommonModule,
     FormsModule,
-    MatDialogActions,
-    MatDialogClose,
-    MatDialogContent,
-    MatDialogTitle,
-    MatDialogModule,
+
     FooterComponent
   ],
   templateUrl: './sign-up.component.html',
@@ -37,7 +31,6 @@ export class SignUpComponent implements OnInit {
   constructor(
     private router: Router,
     private as: AuthService,
-    private dialog: MatDialog,
     private sharedService: SharedService,
   ) { }
 
@@ -72,8 +65,6 @@ export class SignUpComponent implements OnInit {
       return;
     }
 
-    console.log(this.emailaddress);
-
     const registrationData = {
       username: this.emailaddress,
       email: this.emailaddress,
@@ -85,7 +76,6 @@ export class SignUpComponent implements OnInit {
         this.emailaddress = '',
           this.password = '',
           this.confirmPassword = '';
-        //this.dialog.open(DialogSignupComponent);
         this.errorMessage = 'Registration successful! Check your emails for verification!';
         this.showCard = true;
         setTimeout(() => {
@@ -95,7 +85,6 @@ export class SignUpComponent implements OnInit {
       error: (error) => {
         this.showCard = true;
         this.errorMessage = error;
-        console.log(this.errorMessage)
         console.error('Registration failed', error);
       }
     });

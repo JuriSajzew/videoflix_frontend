@@ -12,7 +12,6 @@ export class AuthService {
 
   public loginWithUsernameAndPassword(email: string, password: string) {
     const url = environment.baseUrl + '/login/';
-    console.log(url);
     const body = {
       "username": email,
       "password": password
@@ -47,9 +46,6 @@ export class AuthService {
         errorMessage = 'Register failed. Please check your details.';
       }
     }
-  
-    // Protokolliere die endgültige Fehlermeldung für Debugging-Zwecke
-    console.log('Server error message:', errorMessage);
   
     // Wirf die Fehlermeldung als Observable Error
     return throwError(() => errorMessage);

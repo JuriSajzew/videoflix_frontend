@@ -33,7 +33,6 @@ export class ForgotPasswordResetComponent implements OnInit {
   ngOnInit(): void {
     // Token aus der URL abrufen
     this.token = this.route.snapshot.queryParamMap.get('token');
-    console.log(this.token)
   }
 
   togglePasswordVisibility(): void {
@@ -53,9 +52,6 @@ export class ForgotPasswordResetComponent implements OnInit {
   }
 
   resetPassword(): void {
-    console.log(this.token);
-    console.log(this.newPassword);
-    console.log(this.confirmPassword);
     if (this.newPassword !== this.confirmPassword) {
       alert('Passwords do not match!');
       return;
@@ -71,9 +67,6 @@ export class ForgotPasswordResetComponent implements OnInit {
       );
     } else {
       alert('Invalid token!');
-      console.log(this.token);
-      console.log(this.newPassword);
-      console.log(this.confirmPassword);
     }
 
     this.newPassword = '';

@@ -39,8 +39,43 @@
     font-family: VideoJS !important;
 }
 
-.my-custom-icon {
-    font-size: 24px; // Größe des Icons
-    color: white; // Farbe des Icons
-    margin: 0 5px; // Abstand um das Icon
+.video-js .vjs-control-bar .vjs-customButton {
+    font-family: VideoJS !important;
+}
+
+.video-js .vjs-control-bar .vjs-customButton:hover {
+    font-family: VideoJS !important;
+}
+
+.vjs-my-custom-icon {
+    width: 20px !important; /* Breite des Icons */
+    height: 20px !important; /* Höhe des Icons */
+    background-image: url('/assets/speed.svg') !important; /* Pfad zu deinem benutzerdefinierten Icon */
+    background-size: cover !important; /* Bild vollständig abdecken */
+    display: inline-block !important; /* Damit das Element das Bild anzeigen kann */
+    /* Optional: Weitere Stile hinzufügen */
+    margin: 5px 5px !important;
   }
+
+  .vjs-quality-menu {
+    position: absolute;
+    background-color: gray;
+    z-index: 1000; /* Sicherstellen, dass das Menü über dem Video angezeigt wird */
+    display: none; /* Standardmäßig versteckt */
+    width: 100px; /* Setze eine feste Breite für das Menü */
+    padding: 10px; /* Fügt Innenabstand hinzu */
+    bottom: 5px;
+    right: 0;
+  }
+  
+  .vjs-quality-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .vjs-quality-list li {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

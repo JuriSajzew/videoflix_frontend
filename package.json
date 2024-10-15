@@ -28,8 +28,7 @@
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "video.js": "^8.18.1",
-    "videojs-contrib-quality-levels": "^4.1.0",
+    "video.js": "^7.18.1",
     "videojs-hotkeys": "^0.2.29",
     "zone.js": "~0.14.3"
   },

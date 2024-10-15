@@ -41,34 +41,26 @@ export class LoginComponent {
   }
 
   constructor(
-    //private as: AuthService,
     private router: Router,
     private http: HttpClient,
     private ls: LoginService,
   ) { }
 
   checkPassword() {
-    const passwordPattern = /^.{8,}$/; // Mindestlänge von 8 Zeichen
+    const passwordPattern = /^.{8,}$/;
     this.isPasswordValid = passwordPattern.test(this.password);
-    console.log('Validierung Passwort:', this.isPasswordValid);
-  }
-
-  loginContain() {
-
   }
 
   async loginButton() {
     const error = await this.ls.login(this.email, this.password);
-    // Wenn es einen Fehler gibt, zeige die Fehlermeldung in der Card an
+    
     if (error) {
       this.errorMessage = error;
       this.showCard = true;
     } else {
-      // Wenn kein Fehler vorliegt, kannst du die Karte verstecken
+
       this.showCard = false;
     }
-
-    console.log('Name ', this.email);
   }
 
   closeCard() {
