@@ -87,39 +87,45 @@
 
     .frame167 {
         width: 100%;
-        max-width: 1260px; /* Maximale Breite festlegen */
+        max-width: 1260px;
         height: 190px;
         gap: 16px;
         display: flex;
         align-items: center;
         justify-content: start;
-        overflow-x: auto; /* Erlaubt horizontales Scrollen */
-        overflow-y: hidden; /* Vertikales Scrollen verstecken */
-        white-space: nowrap; /* Verhindert Umbruch der Inhalte */
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
 
-         /* Scrollbar-Styling für Webkit-Browser (Chrome, Safari) */
-         &::-webkit-scrollbar {
-            height: 12px; /* Höhe der Scrollbar */
+        &::-webkit-scrollbar {
+            height: 12px;
         }
 
         &::-webkit-scrollbar-track {
-            background: transparent; /* Hintergrund des Scroll-Tracks */
+            background: transparent;
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: #2e3edf; /* Farbe des Scrollbalkens */
-            border-radius: 6px; /* Abgerundete Ecken */
-            border: 3px solid transparent; /* Außenabstand, für besseres Erscheinungsbild */
-            background-clip: content-box; /* Verhindert Überlappung mit dem Rand */
+            background-color: #2e3edf;
+            border-radius: 6px;
+            border: 3px solid transparent;
+            background-clip: content-box;
         }
 
         &::-webkit-scrollbar-thumb:hover {
-            background-color: darken(#2e3edf, 10%); /* Dunklere Farbe beim Hover */
+            background-color: darken(#2e3edf, 10%);
         }
 
         .video-contain {
             width: 300px;
-            flex-shrink: 0; /* Verhindert, dass die Elemente schrumpfen */
+            flex-shrink: 0;
+            position: relative;
+
+            &:hover .description_contain {
+                display: block;
+                transform: translateX(0);
+                opacity: 1;
+            }
 
             video {
                 width: 110px;
@@ -148,4 +154,33 @@
         text-align: left;
         color: #ffffff;
     }
+}
+
+.description_contain {
+    position: absolute; /* Stelle sicher, dass die Beschreibung relativ zum Container positioniert ist */
+    display: none; /* Standardmäßig verborgen */
+    padding: 10px; /* Abstand innerhalb des Containers */
+    font-size: 16px; /* Schriftgröße */
+    line-height: 1.6; /* Zeilenhöhe für bessere Lesbarkeit */
+    background-color: rgba(0, 0, 0, 0.7); /* Dunkler Hintergrund mit Transparenz für den Textcontainer */
+    color: white; /* Textfarbe weiß */
+    margin-top: 10px; /* Abstand über der Beschreibung, damit sie unter dem Video ist */
+    max-width: 320px; /* Nimmt die volle Breite des Containers ein */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    z-index: 1000;
+
+    &.visible {
+        display: block; /* Zeige den Text, wenn die Klasse 'visible' hinzugefügt wird */
+    }
+}
+
+.info_button {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
 }

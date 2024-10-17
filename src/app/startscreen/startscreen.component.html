@@ -20,8 +20,14 @@
                         poster: video.cover_image,
                         sources: [{ src: video.video_urls[selectedQuality] || '', 
                     type: 'application/x-mpegURL' }]
-                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">>
+                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">
                     </app-vjs-player>
+                    <img src="./assets/info.png" alt="info Button" class="info_button"
+                        (mouseenter)="video.showDescription = true" (mouseleave)="video.showDescription = false">
+                </div>
+                <div class="description_contain" *ngFor="let video of newVideos"
+                    [ngClass]="{'visible': video.showDescription}">
+                    <span>{{video.description}}</span>
                 </div>
             </div>
         </div>
@@ -39,6 +45,12 @@
                      type: 'application/x-mpegURL' }]
                      }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">
                     </app-vjs-player>
+                    <img src="./assets/info.png" alt="info Button" class="info_button"
+                        (mouseenter)="video.showDescription = true" (mouseleave)="video.showDescription = false">
+                </div>
+                <div class="description_contain" *ngFor="let video of documentaryVideos"
+                    [ngClass]="{'visible': video.showDescription}">
+                    <span>{{video.description}}</span>
                 </div>
             </div>
         </div>
@@ -54,8 +66,14 @@
                         poster: video.cover_image,
                        sources: [{ src: video.video_urls[selectedQuality] || '', 
                     type: 'application/x-mpegURL' }]
-                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">>
+                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">
                     </app-vjs-player>
+                    <img src="./assets/info.png" alt="info Button" class="info_button"
+                        (mouseenter)="video.showDescription = true" (mouseleave)="video.showDescription = false">
+                </div>
+                <div class="description_contain" *ngFor="let video of dramaVideos"
+                    [ngClass]="{'visible': video.showDescription}">
+                    <span>{{video.description}}</span>
                 </div>
             </div>
         </div>
@@ -71,8 +89,14 @@
                         poster: video.cover_image,
                         sources: [{ src: video.video_urls[selectedQuality] || '', 
                     type: 'application/x-mpegURL' }]
-                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">>
+                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">
                     </app-vjs-player>
+                    <img src="./assets/info.png" alt="info Button" class="info_button"
+                        (mouseenter)="video.showDescription = true" (mouseleave)="video.showDescription = false">
+                </div>
+                <div class="description_contain" *ngFor="let video of romanceVideos"
+                    [ngClass]="{'visible': video.showDescription}">
+                    <span>{{video.description}}</span>
                 </div>
             </div>
         </div>

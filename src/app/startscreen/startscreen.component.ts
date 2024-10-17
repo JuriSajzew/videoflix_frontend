@@ -20,6 +20,7 @@ export interface Video {
   video_urls: {
     [quality: string]: string | '';
   }
+  showDescription?: boolean;
 
 }
 @Component({
@@ -67,6 +68,11 @@ export class StartscreenComponent implements OnInit {
     try {
       this.allVideos = await this.videoService.LoadAllVideos();
       console.log('Alle Videos ', this.allVideos);
+
+      this.allVideos = this.allVideos.map(video => ({
+        ...video,
+        showDescription: false // Setze die neue Eigenschaft auf false
+      }));
       this.categorizeVideos();
       this.filterNewVideos();
     } catch (e) {
@@ -77,10 +83,10 @@ export class StartscreenComponent implements OnInit {
   onQualityChange(newQuality: string) {
     this.selectedQuality = newQuality;
 
-     if (this.vjsPlayerComponent && this.vjsPlayerComponent.player) {
-      this.vjsPlayerComponent.player.src({ 
-        src: this.vjsPlayerComponent.videoUrls[newQuality], 
-        type: 'application/x-mpegURL' 
+    if (this.vjsPlayerComponent && this.vjsPlayerComponent.player) {
+      this.vjsPlayerComponent.player.src({
+        src: this.vjsPlayerComponent.videoUrls[newQuality],
+        type: 'application/x-mpegURL'
       });
       this.vjsPlayerComponent.player.play();
     }
