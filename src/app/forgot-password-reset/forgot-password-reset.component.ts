@@ -53,7 +53,6 @@ export class ForgotPasswordResetComponent implements OnInit {
 
   resetPassword(): void {
     if (this.newPassword !== this.confirmPassword) {
-      alert('Passwords do not match!');
       return;
     }
 
@@ -62,11 +61,11 @@ export class ForgotPasswordResetComponent implements OnInit {
         token: this.token,
         password: this.newPassword
       }).subscribe(
-        () => alert('Password reset successful!'),
-        error => alert('Error resetting password. Please try again.')
+        () => console.error('Password reset successful!'),
+        error => console.error('Error resetting password. Please try again.')
       );
     } else {
-      alert('Invalid token!');
+      console.error('Invalid token!');
     }
 
     this.newPassword = '';

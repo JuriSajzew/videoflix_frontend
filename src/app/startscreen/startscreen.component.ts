@@ -100,7 +100,7 @@ export class StartscreenComponent implements OnInit {
   filterNewVideos(): void {
     const today = new Date();
     const twoDaysAgo = new Date();
-    twoDaysAgo.setDate(today.getDate() - 2);
+    twoDaysAgo.setDate(today.getDate() - 20);
 
     this.newVideos = this.allVideos.filter(video => {
       const createdAt = new Date(video.created_at);
