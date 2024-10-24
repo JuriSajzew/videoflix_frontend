@@ -78,9 +78,6 @@ export class SignUpComponent implements OnInit {
           this.confirmPassword = '';
         this.errorMessage = 'Registration successful! Check your emails for verification!';
         this.showCard = true;
-        setTimeout(() => {
-          this.router.navigate(['/login']);
-        }, 5000);
       },
       error: (error) => {
         this.showCard = true;

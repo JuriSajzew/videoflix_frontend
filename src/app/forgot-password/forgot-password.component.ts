@@ -66,6 +66,10 @@ export class ForgotPasswordComponent {
         this.errorMessage = 'An email has been sent with instructions to reset your password.';
       }
     });
+    console.log('URL:', environment.baseUrl + '/check_email/');
+    console.log('Request Payload for Check Email:', { email: this.email });
+    console.log('URL:', environment.baseUrl + '/password_reset/');
+    console.log('Request Payload for Password Reset:', { email: this.email });
   }
 
   closeCard() {
