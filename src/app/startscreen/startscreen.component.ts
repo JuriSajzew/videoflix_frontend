@@ -67,7 +67,6 @@ export class StartscreenComponent implements OnInit {
   async ngOnInit() {
     try {
       this.allVideos = await this.videoService.LoadAllVideos();
-      console.log('Alle Videos ', this.allVideos);
 
       this.allVideos = this.allVideos.map(video => ({
         ...video,
