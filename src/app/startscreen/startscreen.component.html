@@ -7,6 +7,27 @@
             <img src="./../../assets/logout.png" alt="">
             Log Out</button>
     </div>
+    <div class="startscreen-video">
+        <app-vjs-player class="startscreen" [options]="{
+            fluid: true, 
+            aspectRatio: '16:9',
+            autoplay: true, 
+            controls: true,
+            loop: true, 
+            poster: '/assets/breakout.png',
+            sources: [{ src:'/assets/Breakout.mp4', type: 'video/mp4' }]
+        }">
+        </app-vjs-player>
+        <!-- Overlay für Titel und Beschreibung -->
+        <div class="video-overlay">
+            <h2 class="video-title">Breakout</h2>
+            <p class="video-description">
+                In a high-security prison, a wrongly convicted man formulates a meticulous plan to break out and prove
+                his innocence. He must navigate a web of alliances and betrayals to reclaim his freedom and expose the
+                truth.
+            </p>
+        </div>
+    </div>
     <div class="video-content" *ngIf="allVideos.length">
         <div class="new-on-videoflix">
             <p>New on Videoflix</p>
@@ -101,4 +122,5 @@
             </div>
         </div>
     </div>
+    <app-footer></app-footer>
 </div>

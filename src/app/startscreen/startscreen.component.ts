@@ -7,6 +7,7 @@ import { VjsPlayerComponent } from "../vjs-player/vjs-player.component";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth.interceptor/auth-interceptor.service';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from '../footer/footer.component';
 
 export interface Video {
   id: number;
@@ -29,7 +30,8 @@ export interface Video {
   imports: [
     CommonModule,
     VjsPlayerComponent,
-    FormsModule
+    FormsModule,
+    FooterComponent,
   ],
   templateUrl: './startscreen.component.html',
   styleUrls: ['./startscreen.component.scss'],
