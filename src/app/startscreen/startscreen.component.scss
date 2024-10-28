@@ -187,12 +187,21 @@
 
 .startscreen{
     max-width: 1440px;
+
+    @media (min-width: 320px) and (max-width: 900px) {
+        height: 332px;
+    }
 }
 
 .startscreen-video {
     position: relative;
     width: 100%;
     max-width: 1440px;
+
+    @media (min-width: 320px) and (max-width: 900px) {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .video-overlay {
@@ -206,6 +215,10 @@
     border-radius: 8px;
     max-width: 60%; /* Passe die Breite nach Bedarf an */
     text-align: left;
+
+    @media (min-width: 320px) and (max-width: 900px) {
+        position: relative;
+    }
 }
 
 .video-title {

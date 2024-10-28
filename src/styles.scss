@@ -303,3 +303,22 @@ h2 {
         }
     }
 }
+
+.back-contain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    img {
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        transition: filter 0.3s;
+
+        &:hover {
+            filter: brightness(0) saturate(100%) invert(27%) sepia(85%) saturate(2953%) hue-rotate(204deg)
+                brightness(100%) contrast(95%);
+        }
+    }
+}
