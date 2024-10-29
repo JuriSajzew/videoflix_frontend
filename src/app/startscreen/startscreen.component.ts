@@ -8,6 +8,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth.interceptor/auth-interceptor.service';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../footer/footer.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { VideoPlayerModalComponent } from '../video-player-modal/video-player-modal.component';
 
 export interface Video {
   id: number;
@@ -32,6 +34,7 @@ export interface Video {
     VjsPlayerComponent,
     FormsModule,
     FooterComponent,
+    MatDialogModule,
   ],
   templateUrl: './startscreen.component.html',
   styleUrls: ['./startscreen.component.scss'],
@@ -51,13 +54,27 @@ export class StartscreenComponent implements OnInit {
   romanceVideos: Video[] = [];
   newVideos: Video[] = [];
   cover_image: Video[] = [];
+  showVideoPlayer = false;
+  hoveredVideo: number | null = null;
 
   selectedQuality: string = '720p';
+
+  videoOptions = {
+    fluid: true,
+    aspectRatio: '16:9',
+    autoplay: true,
+    controls: true,
+    poster: '/assets/breakout.png',
+    sources: [
+      { src: '/assets/Breakout.mp4', type: 'video/mp4' }
+    ]
+  };
 
   constructor(
     private as: AuthService,
     private router: Router,
     private videoService: VideoService,
+    private dialog: MatDialog
   ) { };
 
   logout() {
@@ -111,4 +128,40 @@ export class StartscreenComponent implements OnInit {
       return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
     });
   }
+
+  onPlayClick() {
+    this.dialog.open(VideoPlayerModalComponent, {
+      panelClass: 'full-screen-dialog',
+      data: {
+        videoOptions: this.videoOptions,
+        title: 'Breakout',
+        description: 'In a high-security prison, a wrongly convicted man formulates a meticulous plan to break out and prove his innocence. He must navigate a web of alliances and betrayals to reclaim his freedom and expose the truth.'
+      }
+    });
+  }
+
+  openVideoModal(video: Video) {
+    const videoOptions = {
+      fluid: true,
+      aspectRatio: '16:9',
+      autoplay: false, // Keine automatische Wiedergabe
+      controls: true,
+      poster: video.cover_image,
+      sources: [{ src: video.video_urls[this.selectedQuality] || '', type: 'application/x-mpegURL' }]
+    };
+
+    this.dialog.open(VideoPlayerModalComponent, {
+      panelClass: 'full-screen-dialog',
+      data: {
+        videoOptions: videoOptions,
+        title: video.title,
+        description: video.description
+      }
+    });
+  }
+
+  setHoveredVideo(videoId: number | null) {
+    this.hoveredVideo = videoId;
+  }
+
 }

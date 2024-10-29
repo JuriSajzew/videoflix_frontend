@@ -8,14 +8,8 @@
             Log Out</button>
     </div>
     <div class="startscreen-video">
-        <app-vjs-player class="startscreen" [options]="{
-            fluid: true, 
-            aspectRatio: '16:9',
-            autoplay: true, 
-            controls: true, 
-            poster: '/assets/breakout.png',
-            sources: [{ src:'/assets/Breakout.mp4', type: 'video/mp4' }]
-        }">
+        <div class="startscreen"></div>
+        <app-vjs-player *ngIf="showVideoPlayer" class="startscreen video-player" [options]="videoOptions">
         </app-vjs-player>
         <div class="video-overlay">
             <h2 class="video-title">Breakout</h2>
@@ -24,6 +18,7 @@
                 his innocence. He must navigate a web of alliances and betrayals to reclaim his freedom and expose the
                 truth.
             </p>
+            <button class="frame1" (click)="onPlayClick()"><img src="./../../assets/play.png" alt="">Play</button>
         </div>
     </div>
     <div class="video-content" *ngIf="allVideos.length">
@@ -31,22 +26,13 @@
             <p>New on Videoflix</p>
             <div class="frame167">
                 <div class="video-contain" *ngFor="let video of newVideos">
-                    <app-vjs-player [options]="{
-                        fluid: true, 
-                        aspectRatio: '16:9', 
-                        autoplay: false, 
-                        controls: true, 
-                        poster: video.cover_image,
-                        sources: [{ src: video.video_urls[selectedQuality] || '', 
-                    type: 'application/x-mpegURL' }]
-                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">
-                    </app-vjs-player>
-                    <img src="./assets/info.png" alt="info Button" class="info_button"
-                        (mouseenter)="video.showDescription = true" (mouseleave)="video.showDescription = false">
-                </div>
-                <div class="description_contain" *ngFor="let video of newVideos"
-                    [ngClass]="{'visible': video.showDescription}">
-                    <span>{{video.description}}</span>
+                    <!-- Coverbild anzeigen -->
+                    <img [src]="video.cover_image" alt="{{ video.title }}" class="video-cover"
+                        (click)="openVideoModal(video)" style="cursor: pointer;" />
+
+                    <div class="description_contain" *ngIf="video.showDescription">
+                        <span>{{ video.description }}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,18 +40,8 @@
             <p>Documentary</p>
             <div class="frame167">
                 <div class="video-contain" *ngFor="let video of documentaryVideos">
-                    <app-vjs-player [options]="{
-                        fluid: true, 
-                        aspectRatio: '16:9', 
-                        autoplay: false, 
-                        controls: true, 
-                        poster: video.cover_image,
-                        sources: [{ src: video.video_urls[selectedQuality] || '', 
-                     type: 'application/x-mpegURL' }]
-                     }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">
-                    </app-vjs-player>
-                    <img src="./assets/info.png" alt="info Button" class="info_button"
-                        (mouseenter)="video.showDescription = true" (mouseleave)="video.showDescription = false">
+                    <img [src]="video.cover_image" alt="{{ video.title }}" class="video-cover"
+                        (click)="openVideoModal(video)" style="cursor: pointer;" />
                 </div>
                 <div class="description_contain" *ngFor="let video of documentaryVideos"
                     [ngClass]="{'visible': video.showDescription}">
@@ -77,18 +53,8 @@
             <p>Drama</p>
             <div class="frame167">
                 <div class="video-contain" *ngFor="let video of dramaVideos">
-                    <app-vjs-player [options]="{
-                        fluid: true, 
-                        aspectRatio: '16:9', 
-                        autoplay: false, 
-                        controls: true,
-                        poster: video.cover_image,
-                       sources: [{ src: video.video_urls[selectedQuality] || '', 
-                    type: 'application/x-mpegURL' }]
-                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">
-                    </app-vjs-player>
-                    <img src="./assets/info.png" alt="info Button" class="info_button"
-                        (mouseenter)="video.showDescription = true" (mouseleave)="video.showDescription = false">
+                    <img [src]="video.cover_image" alt="{{ video.title }}" class="video-cover"
+                        (click)="openVideoModal(video)" style="cursor: pointer;" />
                 </div>
                 <div class="description_contain" *ngFor="let video of dramaVideos"
                     [ngClass]="{'visible': video.showDescription}">
@@ -100,18 +66,8 @@
             <p>Romance</p>
             <div class="frame167">
                 <div class="video-contain" *ngFor="let video of romanceVideos">
-                    <app-vjs-player [options]="{
-                        fluid: true, 
-                        aspectRatio: '16:9', 
-                        autoplay: false, 
-                        controls: true, 
-                        poster: video.cover_image,
-                        sources: [{ src: video.video_urls[selectedQuality] || '', 
-                    type: 'application/x-mpegURL' }]
-                    }" [videoUrls]="video.video_urls" (qualityChange)="onQualityChange($event)">
-                    </app-vjs-player>
-                    <img src="./assets/info.png" alt="info Button" class="info_button"
-                        (mouseenter)="video.showDescription = true" (mouseleave)="video.showDescription = false">
+                    <img [src]="video.cover_image" alt="{{ video.title }}" class="video-cover"
+                        (click)="openVideoModal(video)" style="cursor: pointer;" />
                 </div>
                 <div class="description_contain" *ngFor="let video of romanceVideos"
                     [ngClass]="{'visible': video.showDescription}">

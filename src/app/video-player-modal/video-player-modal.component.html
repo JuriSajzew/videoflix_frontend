@@ -1,0 +1,11 @@
+<mat-dialog-content>
+    <div class="back-contain">
+        <img src="/assets/arrow.ico" alt="Button zum Schließen des Fensters" (click)="closeDialog()">
+    </div>
+    <app-vjs-player class="video-player" [options]="videoOptions">
+    </app-vjs-player>
+    <div class="video-overlay">
+        <h2 class="video-title">{{data.title}}</h2>
+        <p class="video-description">{{ data.description }}</p>
+      </div>
+</mat-dialog-content>
