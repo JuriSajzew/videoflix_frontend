@@ -14,6 +14,7 @@ mat-dialog-content {
 
     @media (min-width: 320px) and (max-width: 900px) {
         padding: 10px !important;
+        width: auto !important;
     }
 
     .back-contain {
@@ -68,7 +69,7 @@ mat-dialog-content {
             color: #ffffff;
 
             @media (min-width: 320px) and (max-width: 900px) {
-                width: 320px;
+                width: 280px;
                 font-size: 14px;
                 line-height: 15px;
                 height: 240px;
