@@ -28,7 +28,7 @@
 
                 <div class="frame179">
                     <div class="send-button">
-                        <button class="button-active" [disabled]="!isPasswordValid">Log in</button>
+                        <button class="button-active" [disabled]="!isPasswordValid  || loading">Log in</button>
                     </div>
                     <div class="frame159">
                         <a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active">Forgot

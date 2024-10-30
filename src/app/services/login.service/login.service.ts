@@ -14,11 +14,12 @@ export class LoginService {
   ) { }
 
   async login(email: string, password: string): Promise<string | null> {
-    this.router.navigate(['/loadwindow']);
+    
     try {
       let resp: any = await this.as.loginWithUsernameAndPassword(email, password);
 
-      localStorage.setItem('token', resp['token'])
+      localStorage.setItem('token', resp['token']);
+      this.router.navigate(['/loadwindow']);
       setTimeout(() => {
         this.router.navigate(['/videocontent']);
       }, 8000);

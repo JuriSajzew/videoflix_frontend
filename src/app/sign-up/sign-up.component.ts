@@ -26,6 +26,7 @@ export class SignUpComponent implements OnInit {
   registerError: string | null = null;
   showCard = false;
   errorMessage: string = '';
+  loading: boolean = false;
 
 
   constructor(
@@ -64,6 +65,7 @@ export class SignUpComponent implements OnInit {
     if (this.passwordError) {
       return;
     }
+    this.loading = true;
 
     const registrationData = {
       username: this.emailaddress,
@@ -73,6 +75,7 @@ export class SignUpComponent implements OnInit {
 
     this.as.register(registrationData).subscribe({
       next: (response) => {
+        this.loading = false;
         this.emailaddress = '',
           this.password = '',
           this.confirmPassword = '';
@@ -80,6 +83,7 @@ export class SignUpComponent implements OnInit {
         this.showCard = true;
       },
       error: (error) => {
+        this.loading = false;
         this.showCard = true;
         this.errorMessage = error;
         console.error('Registration failed', error);

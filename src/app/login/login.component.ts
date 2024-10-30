@@ -33,6 +33,7 @@ export class LoginComponent {
   isPasswordValid: boolean = false;
   showCard = false;
   errorMessage: string = '';
+  loading: boolean = false;
 
 
 
@@ -52,8 +53,10 @@ export class LoginComponent {
   }
 
   async loginButton() {
+    this.loading = true;
     const error = await this.ls.login(this.email, this.password);
-    
+    this.loading = false;
+
     if (error) {
       this.errorMessage = error;
       this.showCard = true;

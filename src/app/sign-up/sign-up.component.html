@@ -44,7 +44,7 @@
 
             <div class="send-button">
                 <button type="submit" class="button-active"
-                    [disabled]="email.invalid || passwordField.invalid || confirmPasswordField.invalid || passwordError"
+                    [disabled]="email.invalid || passwordField.invalid || confirmPasswordField.invalid || passwordError || loading"
                     (click)="register()">Get
                     Started</button>
             </div>
