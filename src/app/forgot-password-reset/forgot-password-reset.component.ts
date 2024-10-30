@@ -13,7 +13,7 @@ import { FooterComponent } from "../footer/footer.component";
     FormsModule,
     CommonModule,
     FooterComponent
-],
+  ],
   templateUrl: './forgot-password-reset.component.html',
   styleUrl: './forgot-password-reset.component.scss'
 })
@@ -61,7 +61,10 @@ export class ForgotPasswordResetComponent implements OnInit {
         token: this.token,
         password: this.newPassword
       }).subscribe(
-        () => console.error('Password reset successful!'),
+        () => {
+          console.error('Password reset successful!'),
+          localStorage.clear();
+        },
         error => console.error('Error resetting password. Please try again.')
       );
     } else {
